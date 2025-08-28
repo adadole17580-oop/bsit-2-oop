@@ -70,6 +70,6 @@ public class PostManager {
         if (authors == null) {
             return new LinkedHashSet<>();
         }
-        return new LinkedHashSet<>(Arrays.asList(authors)); // keeps insertion order, removes duplicates
+        return new LinkedHashSet<>(Arrays.asList(authors));
     }
 }
