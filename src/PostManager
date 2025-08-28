@@ -1,0 +1,75 @@
+import java.util.*;
+
+public class PostManager {
+
+    public int calculateEngagement(int... interactions) {
+        if (interactions == null || interactions.length == 0) {
+            return 0;
+        }
+        int total = 0;
+        for (int i : interactions) {
+            total += i;
+        }
+        return total;
+    }
+
+    public String getCategoryRating(int engagementScore) {
+        if (engagementScore >= 1000) {
+            return "Viral";
+        } else if (engagementScore >= 500 && engagementScore <= 999) {
+            return "Popular";
+        } else if (engagementScore >= 100 && engagementScore <= 499) {
+            return "Good";
+        } else if (engagementScore >= 50 && engagementScore <= 99) {
+            return "Low";
+        } else {
+            return "Poor";
+        }
+    }
+
+    public void displayPostStats(String postTitle, int engagementScore) {
+        System.out.println("Post: " + postTitle);
+        System.out.println("Engagement Score: " + engagementScore);
+    }
+
+    public void displayPostStats(String postTitle, int engagementScore, String category) {
+        System.out.println("Post: " + postTitle);
+        System.out.println("Engagement Score: " + engagementScore);
+        System.out.println("Category: " + category);
+    }
+
+    public ArrayList<String> manageHashtags(String[] hashtags) {
+        if (hashtags == null) {
+            hashtags = new String[0];
+        }
+
+        String[] fixedSizeHashtags = new String[5];
+        for (int i = 0; i < Math.min(hashtags.length, 5); i++) {
+            fixedSizeHashtags[i] = hashtags[i];
+        }
+
+        LinkedHashSet<String> uniqueSet = new LinkedHashSet<>(Arrays.asList(fixedSizeHashtags));
+        uniqueSet.remove(null);
+        return new ArrayList<>(uniqueSet);
+    }
+
+    public LinkedList<String> findTrendingPosts(ArrayList<String> posts, HashMap<String, Integer> postEngagement) {
+        LinkedList<String> trendingPosts = new LinkedList<>();
+        if (posts == null || postEngagement == null) return trendingPosts;
+
+        for (String post : posts) {
+            Integer score = postEngagement.get(post);
+            if (score != null && score > 500) {
+                trendingPosts.add(post);
+            }
+        }
+        return trendingPosts;
+    }
+
+    public LinkedHashSet<String> getUniqueAuthors(String... authors) {
+        if (authors == null) {
+            return new LinkedHashSet<>();
+        }
+        return new LinkedHashSet<>(Arrays.asList(authors)); // keeps insertion order, removes duplicates
+    }
+}
