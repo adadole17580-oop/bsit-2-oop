@@ -22,6 +22,7 @@ class Dog extends Pet {
     @Override
     public void makeSound() {
         System.out.println(name + " says: Woof! Woof!");
+        System.out.println();
     }
 }
 
@@ -33,6 +34,7 @@ class Cat extends Pet {
     @Override
     public void makeSound() {
         System.out.println(name + " says: Meow! Meow!");
+        System.out.println();
     }
 }
 
