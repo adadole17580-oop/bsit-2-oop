@@ -1,5 +1,7 @@
 public class Main {
     public static void main(String[] args) {
+        System.out.println("=== Library Management System ===");
+
         Media book1 = new Book("Java Fundamentals", "B001", "Robert Martin");
         Media dvd1 = new DVD("OOP Concepts", "D001", "Tech Films");
         Media mag1 = new Magazine("Programming Weekly", "M001", 15);
